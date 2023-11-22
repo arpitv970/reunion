@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for our property dealing application",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --env-file .env --watch server.js",
+    "start": "node --env-file .env server.js"
+  },
+  "author": "Arpit Verma",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.1"
+  }
+}
