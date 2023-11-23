@@ -18,7 +18,7 @@ app.use('/api', userRouter)
 
 // Moongoose
 const connectToDB = async () => {
-  mongoose.connect(URI, {
+  await mongoose.connect(URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }).then(() => {
@@ -30,6 +30,8 @@ const connectToDB = async () => {
 
 // Server endpoint
 app.listen(PORT, async () => {
+  // NOTE: Here I am asynchronously connecting to Database,
+  // before any other functionality inside Express Server
   await connectToDB()
   console.log(`Your Express + NodeJS server is running localhost:${PORT}`)
 })

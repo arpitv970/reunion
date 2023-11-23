@@ -39,6 +39,32 @@ const signup = async (req, res, next) => {
   });
 };
 
+const login = async (req, res, next) => {
+  const { email, password } = req.body;
+  let existingUser;
+  try {
+    existingUser = await User.findOne({ email });
+  } catch (err) {
+    return console.log(err);
+  }
+
+  if (!existingUser) {
+    return res.status(404).json({ message: 'No User found!' });
+  }
+
+  // NOTE: We are not storing the JWT Token in our DB,
+  // instead it is generated at client side everytime the user tries to login
+  return (await bcryptjs.compareSync(password, existingUser.password))
+    ? res.status(200).json({
+      user: existingUser,
+      token: generateToken(existingUser._id),
+    })
+    : res.status(400).json({
+      message: 'Wrong Credentials detected, please enter correct ones',
+    });
+};
+
 module.exports = {
-  signup
+  signup,
+  login,
 }
