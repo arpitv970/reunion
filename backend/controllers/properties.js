@@ -13,15 +13,15 @@ const fetchMyProperties = async (req, res, next) => {
 }
 
 const addNewProperty = async (req, res, next) => {
-  return res.status(200).json({ properties: 'All Properties here' })
+  return res.status(200).json({ properties: 'My Properties here' })
 }
 
 const updateMyProperty = async (req, res, next) => {
-  return res.status(200).json({ properties: 'All Properties here' })
+  return res.status(200).json({ properties: 'Update Properties here' })
 }
 
 const deleteMyProperty = async (req, res, next) => {
-  return res.status(200).json({ properties: 'All Properties here' })
+  return res.status(200).json({ properties: 'Delete Properties here' })
 }
 
 module.exports = {
