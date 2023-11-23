@@ -29,14 +29,16 @@ const signup = async (req, res, next) => {
 
   try {
     await user.save();
-  } catch (err) {
-    return console.log(err);
-  }
 
-  return res.status(201).json({
-    user,
-    token: generateToken(user._id),
-  });
+    return res.status(201).json({
+      user,
+      token: generateToken(user._id),
+    });
+
+  } catch (err) {
+    console.log(err)
+    return res.status(400).json({ error: err })
+  }
 };
 
 const login = async (req, res, next) => {
@@ -45,7 +47,7 @@ const login = async (req, res, next) => {
   try {
     existingUser = await User.findOne({ email });
   } catch (err) {
-    return console.log(err);
+    return (err);
   }
 
   if (!existingUser) {
