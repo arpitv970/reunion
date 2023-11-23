@@ -1,3 +1,7 @@
+const bcryptjs = require('bcryptjs')
+const User = require("../models/User");
+const generateToken = require('../lib/config/generateToken');
+
 const signup = async (req, res, next) => {
   const { name, email, password, pic } = req.body;
   let existingUser;
