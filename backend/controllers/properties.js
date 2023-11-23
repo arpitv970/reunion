@@ -51,7 +51,22 @@ const addNewProperty = async (req, res, next) => {
 }
 
 const updateMyProperty = async (req, res, next) => {
-  return res.status(200).json({ properties: 'Update Properties here' })
+  const userId = req.user._id;
+  const { id } = req.params;
+
+  try {
+    let propertyToUpdate = await Property.
+      findOneAndUpdate(
+        { _id: id, owner: userId },
+        { $set: req.body }
+      )
+
+    return res.status(200).json({ propertyToUpdate })
+
+  } catch (error) {
+    return res.status(400).json({ error })
+  }
+
 }
 
 const deleteMyProperty = async (req, res, next) => {
