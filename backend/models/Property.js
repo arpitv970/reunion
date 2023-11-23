@@ -13,6 +13,11 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    require: true
+  },
   data: {
     bed: {
       type: Number,
@@ -23,8 +28,18 @@ const propertySchema = new mongoose.Schema({
       required: true
     },
     area: {
-      type: String,
-      required: true
+      width: {
+        type: Number,
+        required: true
+      },
+      breadth: {
+        type: Number,
+        required: true
+      },
+      units: {
+        type: String,
+        required: true
+      }
     }
   }
 });
