@@ -70,7 +70,21 @@ const updateMyProperty = async (req, res, next) => {
 }
 
 const deleteMyProperty = async (req, res, next) => {
-  return res.status(200).json({ properties: 'Delete Properties here' })
+  const userId = req.user._id;
+  const { id } = req.params;
+
+  try {
+    let propertyToDelete = await Property.
+      findOneAndDelete(
+        { _id: id, owner: userId }
+      )
+
+    return res.status(200).json({ propertyToDelete, message: 'Property has been deleted!!' })
+
+  } catch (error) {
+    return res.status(400).json({ error })
+  }
+
 }
 
 module.exports = {
