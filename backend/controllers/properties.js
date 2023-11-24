@@ -30,7 +30,8 @@ const addNewProperty = async (req, res, next) => {
     img,
     name,
     address,
-    data
+    data,
+    price
   } = req.body;
 
   let newProperty = {
@@ -38,6 +39,7 @@ const addNewProperty = async (req, res, next) => {
     name,
     address,
     data,
+    price,
     owner: req.user._id,
   }
 

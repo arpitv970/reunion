@@ -11,7 +11,8 @@ export interface PropertyType {
   img: string,
   name: string,
   address: string,
-  data: PropertyDataType
+  price: number,
+  data: PropertyDataType,
 }
 
 /*

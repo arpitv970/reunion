@@ -13,6 +13,10 @@ const propertySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  price: {
+    type: Number,
+    require: true
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

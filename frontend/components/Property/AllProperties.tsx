@@ -5,6 +5,7 @@ import { API_URL } from '@/lib/utils';
 import axios, { AxiosResponse } from 'axios';
 import { PropertyType } from '@/lib/types';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import PropertyCard from './PropertyCard';
 
 const AllProperties = () => {
   const [properties, setProperties] = useState<PropertyType[]>([]);
@@ -45,7 +46,7 @@ const AllProperties = () => {
   return (
     <InfiniteScroll
       dataLength={properties.length}
-      next={fetchProperties}
+      next={fetchMoreProperties}
       loader={<div>Loding...</div>}
       hasMore={
         ((page - 1) * limit) < properties.length
@@ -53,10 +54,13 @@ const AllProperties = () => {
           : false
       }
     >
-      <section>
+      <section className='properties-sec'>
         {
           properties.map((property: PropertyType, key: number) => (
-            <div key={key}>{property.name}</div>
+            <PropertyCard
+              key={key}
+              {...property}
+            />
           ))
         }
       </section>

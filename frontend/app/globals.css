@@ -90,3 +90,36 @@ main {
 .nav-actions {
   @apply flex gap-3;
 }
+
+/* properties */
+.properties-sec {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-4 w-[80%] mx-auto;
+}
+
+.property-card {
+  @apply border border-border rounded-lg p-2 w-[100%] h-[100%] flex flex-col justify-around items-start gap-1;
+}
+
+.property-card img {
+  @apply w-[100%] h-[60%] rounded-sm object-cover;
+}
+
+.property-card p {
+  @apply text-blue-500;
+}
+
+.property-card h1 {
+  @apply text-2xl font-bold;
+}
+
+.property-card h2 {
+  @apply text-xl text-gray-300;
+}
+
+.property-card div {
+  @apply flex flex-wrap gap-2 justify-start md:justify-around items-center w-[100%];
+}
+
+.property-card div > span {
+  @apply border border-border rounded-lg px-3 py-2;
+}
