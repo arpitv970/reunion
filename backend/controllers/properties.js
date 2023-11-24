@@ -2,8 +2,12 @@ const { propertiesList } = require("../lib/utils")
 const Property = require("../models/Property")
 
 const fetchAllProperties = async (req, res, next) => {
+  const { page, limit } = req.query;
   try {
-    let allProperties = await Property.find().populate('owner', 'name pic email')
+    let allProperties = await Property.find()
+      .skip((page - 1) * limit)
+      .limit(parseInt(limit))
+      .populate('owner', 'name pic email')
     return res.status(200).json({ allProperties })
   } catch (error) {
     return res.status(400).json({ error })
