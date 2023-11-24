@@ -1,4 +1,3 @@
-const { propertiesList } = require("../lib/utils")
 const Property = require("../models/Property")
 
 const fetchAllProperties = async (req, res, next) => {
@@ -8,9 +7,9 @@ const fetchAllProperties = async (req, res, next) => {
       .skip((page - 1) * limit)
       .limit(parseInt(limit))
       .populate('owner', 'name pic email')
-    return res.status(200).json({ allProperties })
+    return res.status(200).json(allProperties)
   } catch (error) {
-    return res.status(400).json({ error })
+    return res.status(400).json(error)
   }
 }
 
@@ -20,9 +19,9 @@ const fetchMyProperties = async (req, res, next) => {
     let myProperties = await Property.find({
       owner: userId
     }).populate('owner', 'name pic email')
-    return res.status(200).json({ myProperties })
+    return res.status(200).json(myProperties)
   } catch (error) {
-    return res.status(400).json({ error })
+    return res.status(400).json(error)
   }
 }
 
@@ -47,7 +46,7 @@ const addNewProperty = async (req, res, next) => {
     let property = await Property.create(newProperty);
     property = await property.populate('owner', 'name pic email');
 
-    return res.status(200).json({ property })
+    return res.status(200).json(property)
 
   } catch (error) {
     return res.status(400).json({ error })

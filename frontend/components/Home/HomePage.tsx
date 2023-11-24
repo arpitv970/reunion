@@ -1,8 +1,12 @@
 import React from 'react'
+import AllProperties from '../Property/AllProperties'
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <section>
+      <h1>Published rental propteries</h1>
+      <AllProperties />
+    </section>
   )
 }
 
